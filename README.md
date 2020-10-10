@@ -26,7 +26,6 @@ cd backend
 pyenv install 3.5.9
 pyenv virtualenv 3.5.9 backend_3.5.9
 pyenv local backend_3.5.9
-pip install -r requirements.txt
 ```
 
 
