@@ -1,0 +1,68 @@
+.mat-flat-button.mat-intmed {
+    background-color: #49B4BB;
+    color:white;
+}
+
+.mat-flat-button.mat-intmed-basic {
+    color: #49B4BB;
+}
+
+.success {
+    color: #49B4BB;
+}
+
+
+mat-card {
+    max-width: 600px;
+    margin: 2em auto;
+}
+
+.logo {
+    width: 25px;
+    height: 25px;
+}
+
+.logo-div {
+    display: flex;
+}
+
+.medicar-text {
+    font-size: 20px;
+    padding-left: 10px;
+    margin: 0px 0px 0px !important;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    max-width: 600px;
+    margin: 2em auto;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.username {
+    color: #A8A8A8;
+    padding-right: 25px;
+    margin: 0 !important;
+}
+
+.d-flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nova-consulta-bt {
+    height: 35px;
+}
+
+.nome-usuario-div {
+    align-items: center;
+}
+
+table {
+    width: 100%;
+  }

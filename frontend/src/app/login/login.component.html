@@ -1,0 +1,31 @@
+<mat-card>
+    <div class="logo-div">
+      <mat-icon svgIcon="medicar_logo" class="logo"></mat-icon>
+      <h1 class="medicar-text">Medicar</h1>  
+    </div>
+
+    <mat-card-content>
+        <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
+            <mat-form-field appearance="outline">
+                <input matInput type="text" placeholder="Email ou Login" required name="username" ngModel>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput [type]="hide ? 'password' : 'text'" placeholder="Senha" required name="password" ngModel>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-checkbox [checked]="remember_me" class="remember-cb" (change)="remember_me = !remember_me">Lembrar de mim</mat-checkbox>
+
+            <div *ngIf="login_error" class="alert">{{login_error}}</div>
+
+            <div class="button-div">
+                <a mat-flat-button color="intmed-basic" routerLink="/create-account">Criar Conta</a>
+                <button mat-flat-button color="intmed" type="submit">Acessar</button>
+            </div>
+            
+        </form>
+    </mat-card-content>
+</mat-card>

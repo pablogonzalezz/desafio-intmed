@@ -1,0 +1,69 @@
+<div class="header">
+    <div class="logo-div">
+        <mat-icon svgIcon="medicar_logo" class="logo"></mat-icon>
+        <h1 class="medicar-text">Medicar</h1>  
+    </div>
+
+    <div class="d-flex nome-usuario-div">
+        <p class="username">{{ usuario_logado }}</p>
+        <button mat-flat-button color="intmed-basic" (click)="deslogar()">Desconectar</button>
+    </div>
+</div>
+<mat-card>
+    <mat-card-content>
+        <div class="d-flex-between">
+            <h2>Consulta Clínica</h2>
+            <button mat-flat-button class="nova-consulta-bt" color="intmed" routerLink='/create-consulta'>
+                <mat-icon>add</mat-icon>
+                Nova Consulta
+            </button>
+        </div>
+
+        <table mat-table [dataSource]="consultas" class="mat-elevation-z0">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="especialidade">
+              <th mat-header-cell *matHeaderCellDef> Especialidade </th>
+              <td mat-cell *matCellDef="let element"> {{element.medico.especialidade.nome}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="profissional">
+              <th mat-header-cell *matHeaderCellDef> Profissional </th>
+              <td mat-cell *matCellDef="let element"> Dr. {{element.medico.nome}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="data">
+              <th mat-header-cell *matHeaderCellDef> Data </th>
+              <td mat-cell *matCellDef="let element"> {{element.dia | date:'dd/LL/y'}} </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="hora">
+              <th mat-header-cell *matHeaderCellDef> Hora </th>
+              <td mat-cell *matCellDef="let element"> {{element.horario.split(":", 2)[0]}}:{{element.horario.split(":", 2)[1]}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                  <button mat-flat-button class="desmarcar-bt" color="intmed-basic" (click)="desmarcarConsulta(element.id)">
+                    <mat-icon>close</mat-icon>
+                    Desmarcar
+                  </button>
+                    <!-- <a href="/blablabla/{{element.id}}" class="success"><mat-icon class="success">close</mat-icon>Desmarcar</a> -->
+                </td>
+              </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          
+        
+    </mat-card-content>
+</mat-card>

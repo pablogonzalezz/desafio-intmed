@@ -1,0 +1,51 @@
+
+<mat-card>
+    <div class="logo-div">
+      <h1>Nova Consulta</h1>  
+    </div>
+
+    <mat-card-content>
+        <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
+            <mat-form-field appearance="outline">
+                <mat-select [(ngModel)]="selectedEspecialidade" name="especialidade" placeholder="Especialidade" (selectionChange)="onEspecialidadeChanged($event)">
+                    <mat-option *ngFor="let especialidade of especialidades" [value]="especialidade.id">
+                      {{especialidade.nome}}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-select [(ngModel)]="selectedMedico" [disabled]="medicoDisabled" name="medico" placeholder="Médico" (selectionChange)="onMedicoChanged($event)">
+                    <mat-option *ngFor="let medico of medicos" [value]="medico.id">
+                      Dr. {{medico.nome}}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-select [(ngModel)]="selectedData" [disabled]="agendaDisabled" name="data" placeholder="Data" (selectionChange)="onDataChanged($event)">
+                    <mat-option *ngFor="let agenda of agendas" [value]="agenda">
+                      {{agenda.dia | date:'dd/LL/y'}}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-select [(ngModel)]="selectedHora" [disabled]="horarioDisabled" name="hora" placeholder="Hora">
+                    <mat-option *ngFor="let horario of horarios" [value]="horario">
+                      {{horario.split(":", 2)[0]}}:{{horario.split(":", 2)[1]}}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+
+            <div *ngIf="consulta_error" class="alert">{{consulta_error}}</div>
+            <div *ngIf="consulta_marcada" class="success">{{consulta_marcada}}</div>
+
+            <div class="button-div">
+                <a mat-flat-button color="intmed-basic" routerLink="/home">Cancelar</a>
+                <button mat-flat-button color="intmed" type="submit">Confirmar</button>
+            </div>
+            
+        </form>
+    </mat-card-content>
+</mat-card>

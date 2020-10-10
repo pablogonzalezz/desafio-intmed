@@ -1,0 +1,43 @@
+
+<mat-card>
+    <div class="logo-div">
+      <mat-icon svgIcon="medicar_logo" class="logo"></mat-icon>
+      <h1 class="medicar-text">Medicar</h1>  
+    </div>
+
+    <h2 class="d-flex">Crie sua conta</h2>
+    <mat-card-content>
+        <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
+            <mat-form-field appearance="outline">
+                <input matInput type="text" placeholder="Nome" required name="username" ngModel>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput type="email" placeholder="Email" required name="email" ngModel>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput [type]="hide ? 'password' : 'text'" placeholder="Senha" required name="password1" ngModel>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <input matInput [type]="hide2 ? 'password' : 'text'" placeholder="Confirmar Senha" required name="password2" ngModel>
+                <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <div *ngIf="form_errors" class="alert">{{form_errors}}</div>
+            <div *ngIf="form_success" class="success">{{form_success}}</div>
+
+            <div class="button-div">
+                <a mat-flat-button color="intmed-basic" routerLink="/login">Cancelar</a>
+                <button mat-flat-button color="intmed" type="submit">Confirmar</button>
+            </div>
+            
+        </form>
+    </mat-card-content>
+</mat-card>
